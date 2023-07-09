@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #FFF;
+            font-family: Arial, sans-serif;
+        }
+
+        #affirmation {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(to bottom right, #ff7f00, #ff5500);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div id="affirmation"></div>
+
+<script>
+    var affirmations = [
+        "I am a strong and capable person.",
+        "I trust myself to make good decisions.",
+        "The point of life is balance, not perfection.",
+        "I’m allowed to take up space.",
+        "I am prepared to face any challenge that comes my way.",
+        "I am worthy of my achievements.",
+        "My life is full of amazing opportunities that are ready for me to step into.",
+        "I am knowledgeable about what I am building and will continue to learn and to improve.",
+        "My abilities are imperfectly perfect.",
+        "I am as good as people say I am.",
+        "My life is a gift and I appreciate everything I have.",
+        "I am ready to learn the lessons that life has to offer.",
+        "I have the power to create change.",
+        "I lead my day with purpose, passion, and powerful action.",
+        "My strengths and resources will help me find a way.",
+        "I am allowed to make mistakes.",
+        "I let go of all that no longer serves me.",
+        "I am a good learner.",
+        "My accomplishments are valid.",
+        "I learn from my mistakes.",
+        "To make small steps toward big goals is progress.",
+        "I am an asset to my team and organization.",
+        "I am exactly where I need to be today.",
+        "I will use constructive criticism to make myself better."
+    ];
+
+    function showAffirmation() {
+        var index = Math.floor(Math.random() * affirmations.length);
+        document.getElementById("affirmation").innerText = affirmations[index];
+
+        setTimeout(showAffirmation, 30 * 60 * 1000); // 30 minutes
+    }
+
+    showAffirmation();
+</script>
+
+</body>
+</html>
