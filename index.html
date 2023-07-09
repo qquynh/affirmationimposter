@@ -11,61 +11,72 @@
             font-family: Arial, sans-serif;
         }
 
-        #affirmation {
-            width: 200px;
+        #clock {
+            width: 240px;
             height: 200px;
-            background: linear-gradient(to bottom right, #ff7f00, #ff5500);
+            background: linear-gradient(to bottom right, #ffa500, #ff7f00);
             border-radius: 20px;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #time {
+            color: white;
+            font-size: 30px;
+        }
+
+        #date {
             color: white;
             font-size: 16px;
-            padding: 10px;
-            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<div id="affirmation"></div>
+<div id="clock">
+    <div id="time"></div>
+    <div id="date"></div>
+</div>
 
 <script>
-    var affirmations = [
-        "I am a strong and capable person.",
-        "I trust myself to make good decisions.",
-        "The point of life is balance, not perfection.",
-        "I’m allowed to take up space.",
-        "I am prepared to face any challenge that comes my way.",
-        "I am worthy of my achievements.",
-        "My life is full of amazing opportunities that are ready for me to step into.",
-        "I am knowledgeable about what I am building and will continue to learn and to improve.",
-        "My abilities are imperfectly perfect.",
-        "I am as good as people say I am.",
-        "My life is a gift and I appreciate everything I have.",
-        "I am ready to learn the lessons that life has to offer.",
-        "I have the power to create change.",
-        "I lead my day with purpose, passion, and powerful action.",
-        "My strengths and resources will help me find a way.",
-        "I am allowed to make mistakes.",
-        "I let go of all that no longer serves me.",
-        "I am a good learner.",
-        "My accomplishments are valid.",
-        "I learn from my mistakes.",
-        "To make small steps toward big goals is progress.",
-        "I am an asset to my team and organization.",
-        "I am exactly where I need to be today.",
-        "I will use constructive criticism to make myself better."
-    ];
+    function showTime() {
+        var date = new Date();
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
 
-    function showAffirmation() {
-        var index = Math.floor(Math.random() * affirmations.length);
-        document.getElementById("affirmation").innerText = affirmations[index];
+        // Convert to 12-hour time
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        
+        // Pad numbers with a leading zero if needed
+        minutes = minutes < 10 ? '0' + minutes : minutes;
 
-        setTimeout(showAffirmation, 30 * 60 * 1000); // 30 minutes
+        // Array to convert month index to month name
+        var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+        // Array to convert day index to day name
+        var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        var dayOfWeek = dayNames[date.getDay()];
+        var dayOfMonth = date.getDate();
+        var month = monthNames[date.getMonth()];
+        var year = date.getFullYear();
+
+        var time = hours + ":" + minutes + " " + ampm;
+        var dateText = dayOfWeek + ", " + dayOfMonth + "th of " + month + " " + year;
+
+        document.getElementById("time").innerText = time;
+        document.getElementById("date").innerText = dateText;
+
+        setTimeout(showTime, 1000);
     }
 
-    showAffirmation();
+    showTime();
 </script>
 
 </body>
